@@ -4,9 +4,248 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--
+ Maven каждый проект идентифицируется парой groupId artifactId. Во избежание конфликта имён,
+  groupId - наименование организации или подразделения и обычно действуют такие же правила как
+  и при именовании пакетов в Java - записывают доменное имя организации или сайта проекта.
+  artifactId - название проекта.
+  Внутри тэга version, как можно догадаться хранится версия проекта.
+-->
+
     <groupId>code_examples</groupId>
     <artifactId>code_examples</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
+    <!--Название проекта-->
+    <name>code_examples</name>
+    <!--Описание проекта-->
+    <description>PowerMock core functionality.</description>
+    <!--сайт проекта-->
+    <url>http://www.powermock.org</url>
+
+    <!-- определяет какого типа файл будет создаваться как результат сборки. Возможные варианты pom, jar, war, ear-->
+    <packaging>war</packaging>
+
+
+    <properties>
+        <hibernate-version>5.2.8.Final</hibernate-version>
+        <java.version>1.8</java.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!--
+<scope> - задает для чего используется зависимость (тесты,...)
+        -->
+
+        <!-- + плагин, создание методов класса (get,set,hash..) при помощи аннотаций -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.16</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!--для создания jsp страниц связь JAVA to HTML -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!--Подключение Н2 бызы данных-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.193</version>
+        </dependency>
+
+        <!-- Тестирование кода -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Логирование кода (+ файл настроек и файл логирования!)-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <!--Для плагина maven-surefire-pluginmaven-surefire-plugin-->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.20</version>
+            <type>maven-plugin</type>
+        </dependency>
+
+        <!--для сборки веб проекта -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <!--
+        <sourceDirectory>
+        определяет, откуда maven будет брать файлы исходного кода. По умолчанию это src/main/java, но вы можете
+        определить, где это вам удобно. Директория может быть только одна (без использования специальных плагинов)
+
+        <resources>
+        и вложенные в неё тэги <resource> определяют, одну или несколько директорий, где хранятся
+        файлы ресурсов. Ресурсы в отличие от файлов исходного кода при сборке просто копируются .
+        Директория по умолчанию src/main/resources
+
+        <outputDirectory>
+        определяет, в какую директорию компилятор будет сохранять результаты компиляции - *.class файлы.
+         Значение по умолчанию - target/classes
+
+        <finalName>
+        - имя результирующего jar (war, ear..) файла с соответствующим типу расширением, который
+         создаётся на фазе package. Значение по умолчанию — artifactId-version.
+        -->
+        <outputDirectory>target</outputDirectory>
+        <finalName>ROOT</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+
+        <plugins>
+            <!--
+                  Компилятор - основной плагин который используется практически во всех проектах.
+                  Он доступен по умолчанию, но практически в каждом проекте его приходится переобъявлять т.к.
+                  настройки по умолчанию не очень подходящие.
+
+                  source - версия языка на котором написана программа;
+                  target - версия java машины которая будет этот код запускать) и указано что кодировка
+                  исходного кода программы UTF-8. По умолчанию версии java - 1.3 а кодировка - та которая
+                  у операционной системы по умолчанию.
+                  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <!--<failOnError>false</failOnError>-->
+                </configuration>
+            </plugin>
+
+            <!--===================================================================-->
+            <!--
+maven-pmd-plugin - плагин для автоматического анализа кода на предмет наличия "нехорошего кода".
+Также в этом плагине есть цель которая находит дубликаты кода Copy/Paste Detector (CPD).
+Основан на проекте a http://pmd.sourceforge.net/
+
+Существует два режима работы плагина:
+
+1. Генерирование отчётов PMD и CPD (цели pmd:pmd pmd:cpd) полезно для оценки качества существующих проектов
+которые раньше не использовали эти инструменты. Позволяет оценить масштабы "бедствия".
+
+2. Проверяют проект на наличие нарушений. В случае, если находится нарушение, сборка ломается(цели pmd:check pmd:cpd-check ). Удобно использовать в самом начале проекта совместно с непрерывной интеграцией. Гарантирует что код всегда "чистый". Экономит много времени ревизии кода (code review). Позволяет сделать разработку более масштабируемой - для большого проекта можно нанять больше программистов.
+Пример декларирования плагина для второго случая:
+-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <targetJdk>1.6</targetJdk>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--===================================================================-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.7</version>
+                <!--<configuration>-->
+                <!--<configLocation>src/config/checkstyle.xml</configLocation>-->
+                <!--<consoleOutput>true</consoleOutput>-->
+                <!--</configuration>-->
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>check</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--===================================================================-->
+            <!--
+            maven-surefire-plugin - плагин который запускает тесты и генерирует отчёты по результатам их выполнения.
+            По умолчанию отчёты сохраняются в ${basedir}/target/surefire-reports и находятся в двух форматах - txt и xml.
+            maven-surefire-plugin содержит единственную цель surefire:test тесты можно писать используя как JUnit так и TestNG.
+
+            по умолчанию запускаются все тесты с такими именами * "**/Test*.java" - включает все java файлы которые
+            начинаются с "Test" и расположены в поддиректориях. * "**/*Test.java" - включает все java файлы которые
+            заканчиваются на "Test" и расположены в поддиректориях. * "**/*TestCase.java" - включает все java файлы
+            которые заканчиваются на "TestCase" и расположены в поддиректориях.
+
+            Чтобы вручную добавлять или удалять классы тестов можно посмотреть здесь http:
+            //maven.apache.org/plugins/maven-surefire-plugin/examples/inclusion-exclusion.html.
+
+            Запустить отдельный тест можно так: mvn -Dtest=TestCircle test имейте в виду что если вы хотите отладить
+            тест в среде разработки то в конфигурации плагина нужно выставить
+
+            <forkMode>never</forkMode>
+            либо запускать тесты с remotedebug
+
+            Пропустить выполнение тестов можно
+               <configuration>
+                 <skipTests>true</skipTests>
+               </configuration>
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <includes>
+                        <include>Sample.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <!--===================================================================-->
+
+            <!--maven-war-plugin с помощтю которого мы сможем отключить необходимость web.xml файла-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 </project>
