@@ -1,4 +1,4 @@
-package my.examples.ConvertTextToUtf8;
+package my.examples.convertTextToUtf8;
 
 import java.io.UnsupportedEncodingException;
 
