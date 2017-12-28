@@ -38,6 +38,13 @@
 
     <dependencies>
 
+        <!--отправка email в java-->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <!--
 <scope> - задает для чего используется зависимость (тесты,...)
         -->
@@ -71,6 +78,7 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+
         </dependency>
 
         <!--Логирование кода (+ файл настроек и файл логирования!)-->

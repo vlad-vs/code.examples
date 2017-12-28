@@ -4,13 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeleteRegistrationImpl implements DeleteRegistration{
-
-	//        String pathToDel = "C:\\Users\\HardWorker\\.IntelliJIdea2017.2\\config\\eval\\idea171.evaluation.key";
-	private String pathToDeleteFile ="D:\\ForTestJavaProgram\\del.txt";
-
-	//        String pathToDelLines = "C:\\Users\\HardWorker\\.IntelliJIdea2017.2\\config\\options\\options.xml";
-	private String pathToReadFile = "D:\\ForTestJavaProgram\\options.xml";
+public class DeleteRegistrationImpl implements DeleteRegistration {
 
 
 	@Override
@@ -27,18 +21,23 @@ public class DeleteRegistrationImpl implements DeleteRegistration{
 		String line;
 		List<String> strings = new ArrayList<>();
 		File file = new File(pathToReadFile);
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			while ((line = reader.readLine()) != null) {
-				if (!line.contains(text)) {
-					strings.add(line);
+		if (file.exists()) {
+			try {
+				BufferedReader reader = new BufferedReader(new FileReader(file));
+				while ((line = reader.readLine()) != null) {
+					if (!line.contains(text)) {
+						strings.add(line);
+
+					} else System.out.println(line + " del");
 				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		} else System.out.println("file not found " + pathToReadFile);
+
 
 		return strings;
 	}
@@ -47,23 +46,20 @@ public class DeleteRegistrationImpl implements DeleteRegistration{
 	public void writeStringToFile(String path, List<String> strings) {
 		BufferedWriter writer;
 
-		try {
-			writer = new BufferedWriter(new FileWriter(path));
-			for (String s : strings) {
-				writer.append(s);
-				writer.append("\r\n");
+		File f = new File(path);
+		if (f.exists()) {
+			try {
+				writer = new BufferedWriter(new FileWriter(path));
+				for (String s : strings) {
+					writer.append(s);
+					writer.append("\r\n");
+				}
+				writer.flush();
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			writer.flush();
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		}else System.out.println("file not found " + path);
 	}
 
-	public void run(){
-//        deleteFile();
-//        readAndDeleteTextLines();
-//        writeStringToFile();
-	}
 }
