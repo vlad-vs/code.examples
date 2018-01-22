@@ -9,7 +9,7 @@ public class DeleteIntalageIdea {
 // linux
 //		String pathToDel = "/home/vlad-vs/.IntelliJIdea2017.3/config/eval/idea173.evaluation.key";
 // windows
-		String pathToDelLines = "C:\\Users\\vlad-\\.IntelliJIdea2017.3\\config\\options\\options";
+		String pathToDelLines = "C:\\Users\\vlad-\\.IntelliJIdea2017.3\\config\\options\\options.xml";
 // linux
 //		String pathToDelLines = "/home/vlad-vs/.IntelliJIdea2017.3/config/options/options.xml";
 
