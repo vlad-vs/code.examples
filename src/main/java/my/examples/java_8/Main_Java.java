@@ -17,6 +17,7 @@ public class Main_Java {
 			}
 		};
 		System.out.println(f.calculate(3));
+
 		System.out.println(f.dubleS(2));
 
 

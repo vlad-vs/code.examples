@@ -62,4 +62,5 @@ public class DeleteRegistrationImpl implements DeleteRegistration {
 		}else System.out.println("file not found " + path);
 	}
 
+
 }
