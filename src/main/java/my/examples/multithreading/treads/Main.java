@@ -1,4 +1,4 @@
-package my.examples.treads;
+package my.examples.multithreading.treads;
 
 public class Main {
 

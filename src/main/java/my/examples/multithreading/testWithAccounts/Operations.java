@@ -1,4 +1,4 @@
-package my.examples.multithreading;
+package my.examples.multithreading.testWithAccounts;
 
 import java.util.concurrent.TimeUnit;
 

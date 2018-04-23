@@ -1,4 +1,4 @@
-package my.examples.shablons;
+package my.examples.abstructClasess;
 
 public abstract class AbstrCl {
     private int a = 5;
