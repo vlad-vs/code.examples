@@ -1,4 +1,4 @@
-package my.examples.shablons.Singleton;
+package my.examples.patterns.Singleton;
 
 public class MainSingleton {
     public static void main(String[] args) {

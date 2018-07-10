@@ -2,7 +2,7 @@ package my.examples.enums;
 
 public class Coffe {
 
-    enum CoffeSize {
+    public enum CoffeSize {
 
         SMALL(100),
         MEDIUM(200),

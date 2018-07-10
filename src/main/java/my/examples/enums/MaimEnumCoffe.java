@@ -7,7 +7,7 @@ public class MaimEnumCoffe {
 
         System.out.println(Coffe.CoffeSize.LARG.getMll());
 
-        System.out.println(CoffeSizeEnum.MEDIUM.getMll());
+//        System.out.println(CoffeSizeEnum.MEDIUM.getMll());
 
     }
 }

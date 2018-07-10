@@ -1,5 +1,6 @@
 package my.examples.java_8;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -46,6 +47,15 @@ public class Main_Java {
 
 		Person person = personSupplier.get();
 
+		System.out.println("=================================");
+		List<String> strings = new ArrayList<>();
+		strings.add("a");
+		strings.add("s");
+		strings.add("d");
+		String a = "q";
+
+		boolean b = strings.stream().anyMatch(x -> x.equals(a));
+		System.out.println(b);
 
 	}
 }
