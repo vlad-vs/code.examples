@@ -1,4 +1,4 @@
-package workTest;
+package my.examples.generycTest.generyc_1;
 
 public interface WorkInterface {
 

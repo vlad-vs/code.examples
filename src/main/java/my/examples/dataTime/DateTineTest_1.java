@@ -1,4 +1,4 @@
-package dataTime;
+package my.examples.dataTime;
 
 import org.joda.time.DateTime;
 

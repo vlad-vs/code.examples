@@ -1,4 +1,4 @@
-package workTest;
+package my.examples.generycTest.generyc_1;
 
 import com.google.common.collect.Lists;
 
@@ -14,8 +14,8 @@ public class Main {
         List<ClasB> clasBList = Lists.newArrayList(clasB);
 
         Wrapper wrapper = new Wrapper();
-//        wrapper.doSome(clasAList);
-//        wrapper.doSome(clasBList);
+        wrapper.doSome(clasAList);
+        wrapper.doSome(clasBList);
 
         doSome(clasAList);
         doSome(clasBList);
