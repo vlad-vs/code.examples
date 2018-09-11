@@ -1,12 +1,19 @@
-package workTest;
+package my.examples.reflection;
 
-public class ClasB implements WorkInterface, Comparable<ClasB> {
+public class MyClass {
 
     private int id;
-
     private String name;
 
-    public ClasB(int id, String name) {
+
+    private int calc(int a, int b){
+        return a + b;
+    }
+
+    public MyClass() {
+    }
+
+    public MyClass(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -19,16 +26,11 @@ public class ClasB implements WorkInterface, Comparable<ClasB> {
         this.id = id;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public int compareTo(ClasB o) {
-        return 0;
     }
 }
