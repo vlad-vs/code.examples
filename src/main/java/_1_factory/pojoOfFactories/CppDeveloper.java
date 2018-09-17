@@ -1,4 +1,4 @@
-package _1_factory;
+package _1_factory.pojoOfFactories;
 
 public class CppDeveloper implements Developer {
     @Override

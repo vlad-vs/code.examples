@@ -1,4 +1,4 @@
-package _2_abstractFactory.webProgect;
+package _2_abstractFactory.factories.webProgect;
 
 import _2_abstractFactory.QAtester;
 

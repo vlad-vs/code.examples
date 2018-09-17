@@ -1,7 +1,8 @@
 package _2_abstractFactory;
 
-import _2_abstractFactory.BankSystem.BankProgectFactory;
-import _2_abstractFactory.webProgect.WebTeamFactory;
+import _2_abstractFactory.factories.BankSystem.BankProgectFactory;
+import _2_abstractFactory.factories.ProgectTeamFactory;
+import _2_abstractFactory.factories.webProgect.WebTeamFactory;
 
 public class CreateProjects {
 

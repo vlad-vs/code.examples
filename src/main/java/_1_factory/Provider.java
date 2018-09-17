@@ -1,5 +1,9 @@
 package _1_factory;
 
+import _1_factory.factoryes.CppDeveloperFactory;
+import _1_factory.factoryes.DeveloperFactory;
+import _1_factory.factoryes.JavaDeveloperFactory;
+
 public class Provider {
 
     public DeveloperFactory getFactory(String factoryName){

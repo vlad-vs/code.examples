@@ -1,23 +1,23 @@
-package _2_abstractFactory.webProgect;
+package _2_abstractFactory.factories.BankSystem;
 
 import _2_abstractFactory.Developer;
 import _2_abstractFactory.PmManager;
-import _2_abstractFactory.ProgectTeamFactory;
+import _2_abstractFactory.factories.ProgectTeamFactory;
 import _2_abstractFactory.QAtester;
 
-public class WebTeamFactory implements ProgectTeamFactory {
+public class BankProgectFactory implements ProgectTeamFactory {
     @Override
     public Developer getDeveloper() {
-        return new PhpDev();
+        return new JavaDeveloper();
     }
 
     @Override
     public PmManager getProgectManager() {
-        return null;
+        return new ManagerBankProgect();
     }
 
     @Override
     public QAtester getQaQAtester() {
-        return new TestPhpCode();
+        return new Tester();
     }
 }

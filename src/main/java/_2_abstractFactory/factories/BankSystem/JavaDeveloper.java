@@ -1,4 +1,4 @@
-package _2_abstractFactory.BankSystem;
+package _2_abstractFactory.factories.BankSystem;
 
 import _2_abstractFactory.Developer;
 
