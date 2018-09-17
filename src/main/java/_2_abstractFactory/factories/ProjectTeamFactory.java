@@ -4,7 +4,7 @@ import _2_abstractFactory.Developer;
 import _2_abstractFactory.PmManager;
 import _2_abstractFactory.QAtester;
 
-public interface ProgectTeamFactory {
+public interface ProjectTeamFactory {
 
     Developer getDeveloper();
     PmManager getProgectManager();

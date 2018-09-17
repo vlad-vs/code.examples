@@ -1,16 +1,16 @@
 package _2_abstractFactory;
 
-import _2_abstractFactory.factories.BankSystem.BankProgectFactory;
-import _2_abstractFactory.factories.ProgectTeamFactory;
-import _2_abstractFactory.factories.webProgect.WebTeamFactory;
+import _2_abstractFactory.factories.BankSystem.BankProjectFactory;
+import _2_abstractFactory.factories.ProjectTeamFactory;
+import _2_abstractFactory.factories.webProJect.WebTeamFactory;
 
 public class CreateProjects {
 
     public static void main(String[] args) {
-        ProgectTeamFactory progectTeamFactory = new BankProgectFactory();
-        Developer developer = progectTeamFactory.getDeveloper();
-        QAtester qaQAtester = progectTeamFactory.getQaQAtester();
-        PmManager progectManager = progectTeamFactory.getProgectManager();
+        ProjectTeamFactory projectTeamFactory = new BankProjectFactory();
+        Developer developer = projectTeamFactory.getDeveloper();
+        QAtester qaQAtester = projectTeamFactory.getQaQAtester();
+        PmManager progectManager = projectTeamFactory.getProgectManager();
 
         developer.writrCode();
         qaQAtester.testCode();
@@ -18,9 +18,9 @@ public class CreateProjects {
 
         System.out.println("-----------------------------------");
 
-        ProgectTeamFactory progectTeamFactoryWeb = new WebTeamFactory();
-        Developer developer1 = progectTeamFactoryWeb.getDeveloper();
-        QAtester qaQAtester1 = progectTeamFactoryWeb.getQaQAtester();
+        ProjectTeamFactory projectTeamFactoryWeb = new WebTeamFactory();
+        Developer developer1 = projectTeamFactoryWeb.getDeveloper();
+        QAtester qaQAtester1 = projectTeamFactoryWeb.getQaQAtester();
         developer1.writrCode();
         qaQAtester1.testCode();
 

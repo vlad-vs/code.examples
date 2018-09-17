@@ -2,7 +2,7 @@ package _2_abstractFactory.factories.BankSystem;
 
 import _2_abstractFactory.PmManager;
 
-public class ManagerBankProgect implements PmManager {
+public class ManagerBankProject implements PmManager {
 
     @Override
     public void manageProgect() {
