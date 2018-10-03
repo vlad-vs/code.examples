@@ -13,17 +13,21 @@ public class Main {
         ClasB clasB = new ClasB(2,"B");
         List<ClasB> clasBList = Lists.newArrayList(clasB);
 
-        Wrapper wrapper = new Wrapper();
-        wrapper.doSome(clasAList);
-        wrapper.doSome(clasBList);
+        List<WorkInterface> list = Lists.newArrayList(clasB,clasA);
 
-        doSome(clasAList);
-        doSome(clasBList);
+        Wrapper wrapper = new Wrapper();
+        wrapper.getMaxId(clasAList);
+        wrapper.getMaxId(clasBList);
+        wrapper.getMaxId(list);
+
+        getMaxId(clasAList);
+        getMaxId(clasBList);
+        getMaxId(list);
     }
 
 
 
-    public static void doSome(List<? extends WorkInterface> list){
+    private static void getMaxId(List<? extends WorkInterface> list){
         if (!list.isEmpty()) {
             WorkInterface workInterface = list.stream().max(Comparator.comparing(WorkInterface::getId)).get();
             System.out.println(workInterface.getName());
