@@ -1,16 +1,18 @@
-package MyOrm.annotations;
+package myOrm.annotations;
 
-import MyOrm.pojo.ColumnType;
+import myOrm.pojo.ColumnType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Table {
+public @interface Column {
 
     String name() default "";
+
+    ColumnType type();
 
 }

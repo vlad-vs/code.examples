@@ -1,8 +1,7 @@
-package MyOrm.creators;
+package myOrm.creators;
 
-import MyOrm.annotations.Column;
-import MyOrm.annotations.Table;
-import MyOrm.pojo.ColumnType;
+import myOrm.annotations.Column;
+import myOrm.annotations.Table;
 import com.google.common.collect.Lists;
 
 import java.lang.reflect.Field;
@@ -10,8 +9,8 @@ import java.util.List;
 
 public class TableCreator {
 
-    public void createTables(List<String> classes) throws ClassNotFoundException {
-
+    public static String createTables(List<String> classes) throws ClassNotFoundException {
+        StringBuilder builder = new StringBuilder();
         String creationPartOne = "CREATE TABLE ";
         String creationPartTwo = "(";
         String creationPartTree = ");";
@@ -34,27 +33,28 @@ public class TableCreator {
             for (Field field : declaredFields) {
                 final Column annotationColumn = field.getAnnotation(Column.class);
                 final String colName = annotationColumn.name().toUpperCase();
-                final ColumnType type = annotationColumn.type();
-                columnsRes.add(colName + " " + type + " ");
-                columnsRes.add(",");
+                final String type = annotationColumn.type().getSql();
+                columnsRes.add(colName + " " + type + " null");
+                columnsRes.add(", ");
             }
             // удаление последней запятой
             final int size = columnsRes.size();
-            columnsRes.remove(size);
-
-//            add(creationPartOne,tableName,creationPartTwo,columnsRes,creationPartTree);
-
-
+            columnsRes.remove(size - 1);
+            String colomns = masToStr(columnsRes);
+            builder.append(add(creationPartOne, tableName, creationPartTwo, colomns, creationPartTree));
+//            System.out.println(add);
         }
-
+        return builder.toString();
     }
-    private String add(String[] args){
-        StringBuffer sql = new StringBuffer();
-        for (String arg : args) {
-            sql.append(arg);
-        }
-        final String s = sql.toString();
-        return s;
+    private static String add(String... args){
+        List<String> strings = Lists.newArrayList(args);
+        return masToStr(strings);
+    }
+
+    private static String masToStr(List<String> strings){
+        StringBuilder stringBuilder = new StringBuilder();
+        strings.forEach(stringBuilder::append);
+        return stringBuilder.toString();
     }
 
 }

@@ -1,4 +1,4 @@
-package MyOrm.pojo;
+package myOrm.pojo;
 
 public enum ColumnType {
 
@@ -12,6 +12,11 @@ public enum ColumnType {
         this.sql = sql;
     }
 
+    public String getJava() {
+        return java;
+    }
 
-
+    public String getSql() {
+        return sql;
+    }
 }
