@@ -11,9 +11,11 @@ public class Main {
         ClasA clasA = new ClasA(1,"A");
         List<ClasA> clasAList = Lists.newArrayList(clasA);
         ClasB clasB = new ClasB(2,"B");
+
         List<ClasB> clasBList = Lists.newArrayList(clasB);
 
         List<WorkInterface> list = Lists.newArrayList(clasB,clasA);
+
 
         Wrapper wrapper = new Wrapper();
         wrapper.getMaxId(clasAList);

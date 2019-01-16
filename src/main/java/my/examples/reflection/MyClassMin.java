@@ -1,25 +1,23 @@
 package my.examples.reflection;
 
-import afu.org.checkerframework.checker.oigj.qual.O;
-
 import java.util.Objects;
 
-public class MyClass implements MyClassInterface{
+public class MyClassMin implements MyClassInterface{
 
-    private final String NAME_EX = "PL";
+    private final String NAME_EX = "MIN";
 
     private int id;
     private String name;
 
     @Override
     public int calc(int a, int b){
-        return a + b;
+        return a - b;
     }
 
-    public MyClass() {
+    public MyClassMin() {
     }
 
-    public MyClass(int id, String name) {
+    public MyClassMin(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -44,7 +42,7 @@ public class MyClass implements MyClassInterface{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MyClass myClass = (MyClass) o;
+        MyClassMin myClass = (MyClassMin) o;
         return id == myClass.id &&
                 Objects.equals(name, myClass.name);
     }
@@ -55,5 +53,12 @@ public class MyClass implements MyClassInterface{
         return Objects.hash(id, name);
     }
 
-
+    @Override
+    public String toString() {
+        return "MyClassMin{" +
+                "NAME_EX='" + NAME_EX + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
