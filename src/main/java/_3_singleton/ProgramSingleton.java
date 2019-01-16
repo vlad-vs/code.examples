@@ -1,4 +1,4 @@
-package _3_Singleton;
+package _3_singleton;
 
 public class ProgramSingleton {
     private static volatile ProgramSingleton programSingleton;

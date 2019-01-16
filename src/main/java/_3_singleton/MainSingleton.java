@@ -1,4 +1,4 @@
-package _3_Singleton;
+package _3_singleton;
 
 public class MainSingleton {
     public static void main(String[] args) {

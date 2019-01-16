@@ -1,4 +1,4 @@
-package _3_Singleton;
+package _3_singleton;
 
 class ProgramStaticLogger {
     private static ProgramStaticLogger ourInstance = new ProgramStaticLogger();

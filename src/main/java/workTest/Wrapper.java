@@ -1,5 +1,7 @@
 package workTest;
 
+import my.examples.generycTest.generyc_1.WorkInterface;
+
 import java.util.Comparator;
 import java.util.List;
 
