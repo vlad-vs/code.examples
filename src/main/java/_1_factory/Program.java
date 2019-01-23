@@ -11,6 +11,11 @@ public class Program {
         java.createDeveloper().vriteCode();
 
 
+        Integer integer = 0;
+
+        boolean b = (integer != 0);
+        System.out.println(b);
+
 //        DeveloperFactory developerFactory1 = getFactory("java");
 //        developerFactory1.createDeveloper().vriteCode();
 //

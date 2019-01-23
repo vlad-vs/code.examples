@@ -25,7 +25,10 @@ public class IterableGooava {
         filter1.forEach(System.out::println);
 
         // фильтр java 8
-        List<IterInter> collect = iters.stream().filter((IterAClass.class)::isInstance).collect(Collectors.toList());
+        List<IterInter> collect = iters.stream()
+                .filter((IterAClass.class)::isInstance)
+                .collect(Collectors.toList());
+
         collect.forEach(System.out::println);
 
     }

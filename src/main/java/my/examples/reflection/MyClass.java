@@ -1,14 +1,18 @@
 package my.examples.reflection;
 
+import afu.org.checkerframework.checker.oigj.qual.O;
+
 import java.util.Objects;
 
-public class MyClass {
+public class MyClass implements MyClassInterface{
+
+    private final String NAME_EX = "PL";
 
     private int id;
     private String name;
 
-
-    private int calc(int a, int b){
+    @Override
+    public int calc(int a, int b){
         return a + b;
     }
 
@@ -50,4 +54,6 @@ public class MyClass {
 
         return Objects.hash(id, name);
     }
+
+
 }

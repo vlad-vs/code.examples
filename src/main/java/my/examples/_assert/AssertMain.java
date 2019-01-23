@@ -13,17 +13,17 @@ public class AssertMain {
 //        checkArgument(a != null, "retId = null, can not continue create RetailerPos value!");
 
 
-//        Integer calc = CalcAssert.calc(-1, 5);
-//        System.out.println(calc);
-        String s1 = "Hello".substring(1, "Hello".length());
-        System.out.println(s1);
-        String s2 = "Hello".substring(0, 1);
-        System.out.println(s2);
-        System.out.println(s1+s2);
-
-
-
-        System.out.println(reverse("Hello"));
+        Integer calc = CalcAssert.calc(1, null);
+        System.out.println(calc);
+//        String s1 = "Hello".substring(1, "Hello".length());
+//        System.out.println(s1);
+//        String s2 = "Hello".substring(0, 1);
+//        System.out.println(s2);
+//        System.out.println(s1+s2);
+//
+//
+//
+//        System.out.println(reverse("Hello"));
 
 
     }
