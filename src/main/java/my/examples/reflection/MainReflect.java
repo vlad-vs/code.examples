@@ -1,5 +1,6 @@
 package my.examples.reflection;
 
+import javax.sound.midi.SoundbankResource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -28,6 +29,9 @@ public class MainReflect {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+
+        final Class<?>[] interfaces = myClass.getClass().getInterfaces();
+        System.out.println(interfaces);
 
 
     }

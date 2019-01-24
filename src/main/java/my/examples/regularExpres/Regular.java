@@ -47,6 +47,12 @@ public class Regular {
 		System.out.println(dumbCheck("vovan"));
 		System.out.println(dumbCheck("vo"));
 		System.out.println(dumbCheck("Z@OZA"));
+
+		PojoForTest pojoForTest = new PojoForTest();
+		System.out.println("======");
+
+		System.out.println(pojoForTest.getId());
+
 	}
 
 	//Регулярное выражение:

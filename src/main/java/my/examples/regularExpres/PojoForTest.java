@@ -8,6 +8,12 @@ public class PojoForTest implements Serializable {
 
     private SecondLevel secondLevel;
 
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

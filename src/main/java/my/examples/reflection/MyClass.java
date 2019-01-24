@@ -1,12 +1,18 @@
 package my.examples.reflection;
 
-public class MyClass {
+import afu.org.checkerframework.checker.oigj.qual.O;
+
+import java.util.Objects;
+
+public class MyClass implements MyClassInterface{
+
+    private final String NAME_EX = "PL";
 
     private int id;
     private String name;
 
-
-    private int calc(int a, int b){
+    @Override
+    public int calc(int a, int b){
         return a + b;
     }
 
@@ -33,4 +39,21 @@ public class MyClass {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyClass myClass = (MyClass) o;
+        return id == myClass.id &&
+                Objects.equals(name, myClass.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name);
+    }
+
+
 }

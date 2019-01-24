@@ -1,5 +1,7 @@
 package _1_factory;
 
+import _1_factory.factoryes.DeveloperFactory;
+
 public class Program {
 
     public static void main(String[] args) {
@@ -8,6 +10,11 @@ public class Program {
         DeveloperFactory java = provider.getFactory("java");
         java.createDeveloper().vriteCode();
 
+
+        Integer integer = 0;
+
+        boolean b = (integer != 0);
+        System.out.println(b);
 
 //        DeveloperFactory developerFactory1 = getFactory("java");
 //        developerFactory1.createDeveloper().vriteCode();
