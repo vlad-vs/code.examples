@@ -111,12 +111,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-.gitignore
 .hg/
 .idea/
 TemplatesJava.iml
-pom.xml
 src/main/java/com/
 src/main/java/text/ConvertTextFormats.java
-src/main/resources/
-src/test/

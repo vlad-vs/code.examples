@@ -13,7 +13,7 @@ import java.util.List;
 public class ReaderTxt {
 
     @Autowired
-    ConfigResolver configResolver;
+    private ConfigResolver configResolver;
 
     public List<String> readTxtFileList(String pathToFile) {
         List<String> lines = Lists.newArrayList();

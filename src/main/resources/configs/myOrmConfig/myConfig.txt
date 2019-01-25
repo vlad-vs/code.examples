@@ -1,0 +1,9 @@
+<conf>
+	<name>name1</name>
+	<value>value1</value>
+</conf>
+
+<conf>
+	<name>name2</name>
+	<value>value2</value>
+</conf>
