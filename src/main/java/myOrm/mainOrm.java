@@ -30,7 +30,7 @@ public class mainOrm {
 //        List<Class<?>> classesForPackage = ClassGetter.getClassesForPackage(aPackage);
 //        List<String> collect = classesForPackage.stream().map(aClass -> aClass.getName()).collect(Collectors.toList());
 
-        String path = "C:\\_code\\java\\progects\\code.examples\\src\\main\\java\\myOrm\\dto";
+        String path = "src/main/java/myOrm/dto";
         String pag = "myOrm.dto";
 
         List<Class<?>> myOrm = ClassGetter.processDirectory(new File(path), pag);

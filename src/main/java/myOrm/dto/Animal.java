@@ -6,7 +6,7 @@ import myOrm.pojo.ColumnType;
 
 import java.util.Objects;
 
-@Table(name = "animal_table")
+@Table()
 public class Animal {
 
     @Column(name = "name",type = ColumnType.text)
