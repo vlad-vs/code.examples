@@ -1,11 +1,10 @@
 <configs>
     <conf>
-        <name>name1</name>
-        <value>value1</value>
+        <name>path</name>
+        <value>src/main/java/my/examples/myOrm/dto</value>
     </conf>
-
     <conf>
-        <name>name2</name>
-        <value>value2</value>
+        <name>pag</name>
+        <value>my.examples.myOrm.dto</value>
     </conf>
 </configs>

@@ -1,8 +1,8 @@
-package myOrm.dto;
+package my.examples.myOrm.dto;
 
-import myOrm.annotations.Column;
-import myOrm.annotations.Table;
-import myOrm.pojo.ColumnType;
+import my.examples.myOrm.annotations.Column;
+import my.examples.myOrm.annotations.Table;
+import my.examples.myOrm.pojo.ColumnType;
 
 import java.util.Objects;
 

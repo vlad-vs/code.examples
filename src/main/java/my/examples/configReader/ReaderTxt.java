@@ -1,4 +1,4 @@
-package my.examples.txtReader;
+package my.examples.configReader;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;

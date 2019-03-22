@@ -1,4 +1,4 @@
-package myOrm.annotations.ColumnAnnotations;
+package my.examples.myOrm.annotations.ColumnAnnotations;
 
 public @interface ColumnUnique {
 

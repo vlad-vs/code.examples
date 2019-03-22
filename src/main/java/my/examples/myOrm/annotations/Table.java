@@ -1,6 +1,4 @@
-package myOrm.annotations;
-
-import lombok.NonNull;
+package my.examples.myOrm.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

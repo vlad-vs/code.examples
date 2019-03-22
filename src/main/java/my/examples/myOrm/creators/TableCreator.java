@@ -1,16 +1,16 @@
-package myOrm.creators;
+package my.examples.myOrm.creators;
 
-import com.google.common.collect.Maps;
-import myOrm.annotations.Column;
-import myOrm.annotations.ColumnAnnotations.ColumnUnique;
-import myOrm.annotations.Table;
+import my.examples.myOrm.annotations.Column;
+import my.examples.myOrm.annotations.ColumnAnnotations.ColumnUnique;
+import my.examples.myOrm.annotations.Table;
 import com.google.common.collect.Lists;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+
+@Component
 public class TableCreator {
 
     public static String createTables(List<String> classes) throws ClassNotFoundException {
@@ -53,25 +53,33 @@ public class TableCreator {
 
             if (!fieldsWithAnnotationColumn.isEmpty()) {
                 for (Field field : fieldsWithAnnotationColumn) {
-                    final String colName = annotationColumn.name().toUpperCase();
-                    final String type = annotationColumn.type().getSql();
+                    final Column annotation = field.getAnnotation(Column.class);
+                    final String colName = annotation.name().toUpperCase();
+                    final String type = annotation.type().getSql();
                     columnsRes.add(colName + " " + type + " null");
                     columnsRes.add(", ");
                 }
             }
 
-            if (fieldsWithAnnotationColumnUnique.size()>1) {
-                final String s = "CREATE INDEX " + tableName;
-                StringBuilder buld = new StringBuilder();
-                buld.append("table_");
-                for (Field unique : fieldsWithAnnotationColumnUnique) {
-
-                }
-                "table_name_id_name_index ON ts.table_name (id, name);";
-            }
+//            if (fieldsWithAnnotationColumnUnique.size()>1) {
+//                final List<String> values = Lists.newArrayList();
+//                final String s = "CREATE INDEX " + tableName;
+//                StringBuilder buld = new StringBuilder();
+//                buld.append("table_");
+//                buld.append(tableName);
+//                for (Field unique : fieldsWithAnnotationColumnUnique) {
+//                    final ColumnUnique annotation = unique.getAnnotation(ColumnUnique.class);
+//                    final String value = annotation.value();
+//                    values.add(value);
+//                }
+//                for ()
+//                "table_name_id_name_index ON ts.table_name (id, name);";
+//            }
             // удаление последней запятой
             final int size = columnsRes.size();
-            columnsRes.remove(size - 1);
+            if (size>1) {
+                columnsRes.remove(size - 1);
+            }
             String colomns = masToStr(columnsRes);
             builder.append(add(creationPartOne, tableName, firstGap, colomns, secondGap,end));
 //            System.out.println(add);

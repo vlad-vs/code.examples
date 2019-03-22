@@ -1,4 +1,4 @@
-package myOrm.pojo;
+package my.examples.myOrm.pojo;
 
 public enum ColumnType {
 

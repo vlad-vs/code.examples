@@ -1,6 +1,6 @@
-package myOrm.annotations;
+package my.examples.myOrm.annotations;
 
-import myOrm.pojo.ColumnType;
+import my.examples.myOrm.pojo.ColumnType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

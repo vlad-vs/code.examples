@@ -1,4 +1,6 @@
-package myOrm.creators;
+package my.examples.myOrm.creators;
+
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+@Component
 public class ClassGetter {
     private static void log(String msg) {
         System.out.println("ClassDiscovery: " + msg);

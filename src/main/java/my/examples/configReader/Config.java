@@ -1,4 +1,4 @@
-package my.examples.txtReader;
+package my.examples.configReader;
 
 import java.util.Objects;
 
