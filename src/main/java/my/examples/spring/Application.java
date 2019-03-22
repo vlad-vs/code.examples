@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Application {
-    
+
 
     public static void main(String[] args) {
         ApplicationContext context =
@@ -25,16 +25,33 @@ public class Application {
         orm.createTables();
 
         final Connection dbConnection = JdbcConnector.getDBConnection();
+        Statement statement = null;
+        ResultSet resultSet = null;
+        
         try {
-        final Statement statement = dbConnection.createStatement();
-        final ResultSet resultSet = statement.executeQuery("select * from branch");
-        while (true) {
-                if (!resultSet.next()) break;
-            System.out.println(resultSet.getString("bm_BRNMH") + " : " + resultSet.getString("bm_BRNM"));
-        }
-
+            statement = dbConnection.createStatement();
+            resultSet = statement.executeQuery("select * from branch");
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("bm_BRNMH") + " : " + resultSet.getString("bm_BRNM"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (resultSet != null)
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+            if (statement != null)
+                try {
+                    statement.close();
+                } catch (SQLException ignore) {
+                }
+            if (dbConnection != null)
+                try {
+                    dbConnection.close();
+                } catch (SQLException ignore) {
+                }
         }
 
     }
