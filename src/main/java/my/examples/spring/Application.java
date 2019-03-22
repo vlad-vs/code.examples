@@ -8,6 +8,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Application {
     
@@ -22,7 +25,17 @@ public class Application {
         orm.createTables();
 
         final Connection dbConnection = JdbcConnector.getDBConnection();
+        try {
+        final Statement statement = dbConnection.createStatement();
+        final ResultSet resultSet = statement.executeQuery("select * from branch");
+        while (true) {
+                if (!resultSet.next()) break;
+            System.out.println(resultSet.getString("bm_BRNMH") + " : " + resultSet.getString("bm_BRNM"));
+        }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
