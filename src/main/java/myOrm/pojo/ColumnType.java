@@ -2,21 +2,21 @@ package myOrm.pojo;
 
 public enum ColumnType {
 
-    text("text","varchar"), integer("int","number");
+    defoult(""),
+    nullType("null"),
+    notNullType(""),
+    prmKeyType("");
 
-    String java;
-    String sql;
 
-    ColumnType(String java, String sql) {
-        this.java = java;
-        this.sql = sql;
+    String type;
+
+    ColumnType(String type) {
+        this.type = type;
     }
 
-    public String getJava() {
-        return java;
+    public String getType() {
+        return type;
     }
 
-    public String getSql() {
-        return sql;
-    }
+
 }

@@ -18,7 +18,7 @@ public class Cat extends Anymal{
     public String toString() {
         return "Cat{" +
                 "name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", valueType='" + type + '\'' +
                 '}';
     }
 }

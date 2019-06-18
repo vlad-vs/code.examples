@@ -3,16 +3,17 @@ package myOrm.dto;
 import myOrm.annotations.Column;
 import myOrm.annotations.Table;
 import myOrm.pojo.ColumnType;
+import myOrm.pojo.ColumnValueType;
 
 import java.util.Objects;
 
-@Table(name = "person_table")
+@Table(name = "person")
 public class Person {
 
-    @Column(name = "name",type = ColumnType.text)
+    @Column(name = "name", valueType = ColumnValueType.text, typeOne = ColumnType.nullType)
     private String name;
 
-    @Column(name = "age",type = ColumnType.integer)
+    @Column(name = "age", valueType = ColumnValueType.integer, typeOne = ColumnType.nullType)
     private int age;
 
     public Person() {

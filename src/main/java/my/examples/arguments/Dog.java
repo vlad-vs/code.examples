@@ -18,7 +18,7 @@ public class Dog extends Anymal{
     public String toString() {
         return "Dog{" +
                 "name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", valueType='" + type + '\'' +
                 '}';
     }
 }

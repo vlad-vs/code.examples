@@ -1,6 +1,7 @@
 package myOrm.annotations;
 
 import myOrm.pojo.ColumnType;
+import myOrm.pojo.ColumnValueType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,6 +14,11 @@ public @interface Column {
 
     String name() default "";
 
-    ColumnType type();
+    ColumnValueType valueType();
+
+    ColumnType typeOne() default ColumnType.defoult;
+    ColumnType typeTwo() default ColumnType.defoult;
+    ColumnType typeTree() default ColumnType.defoult;
+    ColumnType typeFor() default ColumnType.defoult;
 
 }
